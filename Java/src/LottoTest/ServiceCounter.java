@@ -21,6 +21,49 @@ public class ServiceCounter {
 
 	}
 
+	private int[][] manualLotto(Scanner sn, int lottoCountSheet) {
+		// TODO Auto-generated method stub
+		int[][] lottosheet = new int[lottoCountSheet][6];
+		int[] userInput = new int[6];
+
+		for (int i = 0; i < lottoCountSheet; i++) {
+			System.out.println("1~45까지의 숫자를 차레대로 입력하세요");
+
+			for (int i1 = 0; i1 < userInput.length; i1++) {
+				sn = new Scanner(System.in);
+				userInput[i1] = sn.nextInt();
+
+				if (userInput[i1] > 0 && userInput[i1] < 46) {
+
+					for (int j = 0; j < i1; j++) {
+						if (userInput[i1] == userInput[j]) {
+							System.out.println("중복되는 숫자입니다. 다시입력하세요");
+							i1--;
+						}
+					}
+				} else {
+
+					System.out.println("범위를 초과 하는 숫자입니다. 다시입력하세요");
+					i1--;
+				}
+			}
+			for (int i1 = 0; i1 < 6; i1++) {
+				for (int j = 0; j < i1; j++) {
+					if (userInput[i1] <= userInput[j]) {
+						int manualSort = userInput[i1];
+						userInput[i1] = userInput[j];
+						userInput[j] = manualSort;
+					}
+				}
+			}
+			System.out.println("선택한 숫자는: \n");
+			for (int i1 = 0; i1 < userInput.length; i1++) {
+				System.out.print("[" + userInput[i1] + "]" + " ");
+			}
+		}
+		return lottosheet;
+	}
+
 	private boolean isAuto() {
 		// TODO Auto-generated method stub
 		return (lottoselect == 1);

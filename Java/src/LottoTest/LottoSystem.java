@@ -12,6 +12,11 @@ public class LottoSystem {
 		this.lottoCountSheet = lottoCountSheet;
 	}
 
+	public LottoSystem(int[][] lottosheet2) {
+		// TODO Auto-generated constructor stub
+		this.lottosheet = lottosheet;
+	}
+
 	public int[][] autoLotto(int lottoCountSheet2) {
 		// TODO Auto-generated method stub
 		lottosheet = new int[lottoCountSheet][6];
