@@ -1,8 +1,9 @@
 package LottoTest;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class ServiceCounter {
+
 	private int lottoselect, lottoCountSheet;
 	int[][] lottosheet;
 
@@ -18,20 +19,33 @@ public class ServiceCounter {
 			lottosheet = manualLotto(sn, lottoCountSheet);
 			lottoSystem = new LottoSystem(lottosheet);
 		}
+
 		int[] matchCount = lottoSystem.matchLotto(lottosheet,
 				lottoSystem.createWinLotto());
-		System.out.println();
-		System.out.println("구매한 로또 ");
 		
+		System.out.println("purchase lotto ");
+		printSheet(lottosheet, matchCount);
 	}
 
-	private int[][] manualLotto(Scanner sn, int lottoCountSheet) {
-		// TODO Auto-generated method stub
+	public void printSheet(int[][] lottoSheet, int[] matchCount) {
+		System.out.println("============================================");
+		for (int z = 0; z < lottoSheet.length; z++) {
+			for (int i = 0; i < lottoSheet[z].length; i++) {
+
+				System.out.print("[" + lottoSheet[z][i] + "]" + " ");
+			}
+
+			System.out.println("Matchnumber :" + matchCount[z]);
+			System.out.println("============================================");
+		}
+	}
+
+	public int[][] manualLotto(Scanner sn, int lottoCountSheet) {
 		int[][] lottosheet = new int[lottoCountSheet][6];
 		int[] userInput = new int[6];
 
 		for (int i = 0; i < lottoCountSheet; i++) {
-			System.out.println("1~45까지의 숫자를 차레대로 입력하세요");
+			System.out.println("Input number 1~45");
 
 			for (int i1 = 0; i1 < userInput.length; i1++) {
 				sn = new Scanner(System.in);
@@ -41,16 +55,17 @@ public class ServiceCounter {
 
 					for (int j = 0; j < i1; j++) {
 						if (userInput[i1] == userInput[j]) {
-							System.out.println("중복되는 숫자입니다. 다시입력하세요");
+							System.out.println("overlaping number, rewrite");
 							i1--;
 						}
 					}
 				} else {
 
-					System.out.println("범위를 초과 하는 숫자입니다. 다시입력하세요");
+					System.out.println("exceeded number ,retry");
 					i1--;
 				}
 			}
+
 			for (int i1 = 0; i1 < 6; i1++) {
 				for (int j = 0; j < i1; j++) {
 					if (userInput[i1] <= userInput[j]) {
@@ -59,11 +74,14 @@ public class ServiceCounter {
 						userInput[j] = manualSort;
 					}
 				}
+
 			}
-			System.out.println("선택한 숫자는: \n");
+
 			for (int i1 = 0; i1 < userInput.length; i1++) {
 				System.out.print("[" + userInput[i1] + "]" + " ");
+
 			}
+			System.out.println();
 		}
 		return lottosheet;
 	}
@@ -75,23 +93,24 @@ public class ServiceCounter {
 
 	private void communication(Scanner sn) {
 		while (true) {
-			System.out.println("자동입력은 1 , 직접입력은 2를 눌러주세요");
+			System.out.println("Auto is 1 , manual is 2");
 			lottoselect = sn.nextInt();
 			try {
 
 				if (lottoselect == 1) {
-					System.out.println("자동입력을 선택하였습니다.\n몇장을 사시겠습니까?");
+					System.out.println("your choice is autolotto.\nhow many??");
 					lottoCountSheet = sn.nextInt();
 
 				} else if (lottoselect == 2) {
-					System.out.println("직접입력을 선택하였습니다.\n몇장을 사시겠습니까?");
+					System.out
+							.println("your choice is manuallotto.\nhow many??");
 					lottoCountSheet = sn.nextInt();
 				}
 			} catch (Exception e) {
 			}
 			if (lottoselect == 1 || lottoselect == 2)
 				break;
-			System.out.println("다시입력하세요");
+			System.out.println("rewrite~");
 		}
 	}
 
