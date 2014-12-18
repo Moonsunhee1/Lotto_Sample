@@ -18,7 +18,11 @@ public class ServiceCounter {
 			lottosheet = manualLotto(sn, lottoCountSheet);
 			lottoSystem = new LottoSystem(lottosheet);
 		}
-
+		int[] matchCount = lottoSystem.matchLotto(lottosheet,
+				lottoSystem.createWinLotto());
+		System.out.println();
+		System.out.println("구매한 로또 ");
+		
 	}
 
 	private int[][] manualLotto(Scanner sn, int lottoCountSheet) {
