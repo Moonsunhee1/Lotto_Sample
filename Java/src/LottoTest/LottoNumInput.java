@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class LottoNumInput {
 
-	private int Lottoselect, LottoSheet;
+	private int lottoselect, lottoSheet;
 	private static Scanner sn;
 	
 
@@ -13,20 +13,20 @@ public class LottoNumInput {
 		while (true) {
 			System.out.println("자동입력은 1 , 직접입력은 2를 눌러주세요");
 			sn = new Scanner(System.in);
-			Lottoselect = sn.nextInt();
+			lottoselect = sn.nextInt();
 			try {
 
-				if (Lottoselect == 1) {
+				if (lottoselect == 1) {
 					System.out.println("자동입력을 선택하였습니다.\n몇장을 사시겠습니까?");
-					LottoSheet = sn.nextInt();
+					lottoSheet = sn.nextInt();
 
-				} else if (Lottoselect == 2) {
+				} else if (lottoselect == 2) {
 					System.out.println("직접입력을 선택하였습니다.\n몇장을 사시겠습니까?");
-					LottoSheet = sn.nextInt();
+					lottoSheet = sn.nextInt();
 				}
 			} catch (Exception e) {
 			}
-			if (Lottoselect == 1 || Lottoselect == 2)
+			if (lottoselect == 1 || lottoselect == 2)
 				break;
 			System.out.println("다시입력하세요");
 		}
@@ -34,12 +34,12 @@ public class LottoNumInput {
 	}
 
 	public int LottoSheetPass() {
-		return LottoSheet;
+		return lottoSheet;
 
 	}
 
 	public int LottoselectPass() {
-		return Lottoselect;
+		return lottoselect;
 	}
 
 }

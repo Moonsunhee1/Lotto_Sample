@@ -7,21 +7,21 @@ import java.util.Scanner;
 
 public class LottoExam {
 
-	private int OutoSort, ManualSort, Lottoselect;
-	private int[] Outonumber, Winnumber, UserInput;
+	private int autoSort, ManualSort, Lottoselect;
+	private int[] autonumber, Winnumber, UserInput;
 	private static Scanner sn;
 
-	public void OutoLotto(int Lottoselect) {
+	public void AutoLotto(int Lottoselect) {
 
 		this.Lottoselect = Lottoselect;
-		Outonumber = new int[6];
+		autonumber = new int[6];
 		Random rd = new Random();
 		if (Lottoselect == 1) {
 
 			for (int i = 0; i < 6; i++) {
-				Outonumber[i] = rd.nextInt(45) + 1;
+				autonumber[i] = rd.nextInt(45) + 1;
 				for (int j = 0; j < i; j++) {
-					if (Outonumber[i] == Outonumber[j]) {
+					if (autonumber[i] == autonumber[j]) {
 						i = i - 1;
 						break;
 					}
@@ -29,17 +29,17 @@ public class LottoExam {
 			}
 			for (int i = 0; i < 6; i++) {
 				for (int j = 0; j <= i; j++) {
-					if (Outonumber[i] <= Outonumber[j]) {
-						OutoSort = Outonumber[i];
-						Outonumber[i] = Outonumber[j];
-						Outonumber[j] = OutoSort;
+					if (autonumber[i] <= autonumber[j]) {
+						autoSort = autonumber[i];
+						autonumber[i] = autonumber[j];
+						autonumber[j] = autoSort;
 					}
 				}
 			}
 			System.out.println("자동추첨된 번호: \n");
 
-			for (int i = 0; i < Outonumber.length; i++) {
-				System.out.print("[" + Outonumber[i] + "]" + " ");
+			for (int i = 0; i < autonumber.length; i++) {
+				System.out.print("[" + autonumber[i] + "]" + " ");
 			}
 			System.out.println();
 
