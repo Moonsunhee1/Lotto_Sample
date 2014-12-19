@@ -13,11 +13,11 @@ public class ServiceCounter {
 		communication(sn);
 		if (isAuto()) {
 
-			lottoSystem = new LottoSystem(lottoselect, lottoCountSheet);
+			lottoSystem = new LottoSystem(lottoCountSheet);
 			lottosheet = lottoSystem.autoLotto(lottoCountSheet);
 		} else {
 			lottosheet = manualLotto(sn, lottoCountSheet);
-			lottoSystem = new LottoSystem(lottosheet);
+			lottoSystem = new LottoSystem();
 		}
 
 		int[] matchCount = lottoSystem.matchLotto(lottosheet,
@@ -76,12 +76,7 @@ public class ServiceCounter {
 				}
 
 			}
-
-			for (int i1 = 0; i1 < userInput.length; i1++) {
-				System.out.print("[" + userInput[i1] + "]" + " ");
-
-			}
-			System.out.println();
+			lottosheet[i] = userInput;
 		}
 		return lottosheet;
 	}

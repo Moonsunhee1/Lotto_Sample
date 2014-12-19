@@ -6,15 +6,13 @@ public class LottoSystem {
 	int lottoSelect, lottoCountSheet;
 	int[][] lottosheet;
 
-	public LottoSystem(int lottoselect, int lottoCountSheet) {
+	public LottoSystem(int lottoCountSheet) {
 		// TODO Auto-generated constructor stub
-		this.lottoSelect = lottoselect;
 		this.lottoCountSheet = lottoCountSheet;
 	}
 
-	public LottoSystem(int[][] lottosheet) {
+	public LottoSystem() {
 		// TODO Auto-generated constructor stub
-		this.lottosheet = lottosheet;
 	}
 
 	public int[] matchLotto(int[][] lottosheet, int[] winLotto) {
